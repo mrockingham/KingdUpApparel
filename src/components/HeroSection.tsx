@@ -54,7 +54,7 @@ export default function HeroSection() {
               color: "white",
             }}
           >
-            KING'D UP
+            {`KING'D UP`}
           </Typography>
           <Typography
             variant="h6"
