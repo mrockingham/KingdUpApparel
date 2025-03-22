@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import {
   Container,
   Grid,
@@ -32,8 +33,6 @@ export default function Home() {
       .then(setProducts)
       .catch((err) => console.error("Failed to load products", err));
   }, []);
-
-  console.log("products", products);
 
   return (
     <Box>
