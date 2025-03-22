@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Grid, Typography, CircularProgress } from "@mui/material";
 import ProductCard from "@/components/ProductCard";
+import HeroSection from "@/components/HeroSection";
 
 type Variant = {
   ID: number;
@@ -29,7 +30,8 @@ export default function Home() {
   console.log("products", products);
 
   return (
-    <Container sx={{ py: 4 }}>
+    <Container>
+      <HeroSection />
       <Typography variant="h4" gutterBottom>
         Kingdup Collection
       </Typography>
