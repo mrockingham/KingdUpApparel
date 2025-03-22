@@ -20,7 +20,7 @@ export default function Home() {
   const [products, setProducts] = useState<Product[] | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/products")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`)
       .then((res) => res.json())
       .then(setProducts)
       .catch((err) => console.error("Failed to load products", err));
