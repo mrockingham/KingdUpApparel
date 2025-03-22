@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { Container, Grid, Typography, CircularProgress } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Typography,
+  CircularProgress,
+  Box,
+} from "@mui/material";
 import ProductCard from "@/components/ProductCard";
 import HeroSection from "@/components/HeroSection";
 
@@ -30,23 +36,25 @@ export default function Home() {
   console.log("products", products);
 
   return (
-    <Container>
+    <Box>
       <HeroSection />
-      <Typography variant="h4" gutterBottom>
-        Kingdup Collection
-      </Typography>
+      <Container sx={{ py: 8 }} maxWidth="lg">
+        <Typography variant="h4" gutterBottom>
+          Kingdup Collection
+        </Typography>
 
-      {!products ? (
-        <CircularProgress />
-      ) : (
-        <Grid container spacing={3}>
-          {products.map((product) => (
-            <Grid item xs={12} sm={6} md={4} key={product.ID}>
-              <ProductCard product={product} />
-            </Grid>
-          ))}
-        </Grid>
-      )}
-    </Container>
+        {!products ? (
+          <CircularProgress />
+        ) : (
+          <Grid container spacing={3}>
+            {products.map((product) => (
+              <Grid item xs={12} sm={6} md={4} key={product.ID}>
+                <ProductCard product={product} />
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Container>
+    </Box>
   );
 }

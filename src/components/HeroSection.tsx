@@ -8,6 +8,7 @@ export default function HeroSection() {
         backgroundImage: "url('/hero-home.png')",
         backgroundSize: "cover",
         backgroundPositionY: "2rem",
+        backgroundPositionX: "left",
         backgroundRepeat: "no-repeat",
         minHeight: { xs: "600px", md: "500px" },
         width: "100%",
