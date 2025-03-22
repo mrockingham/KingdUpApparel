@@ -29,7 +29,7 @@ export default function Header() {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", p: 2 }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        KING'D UP
+        {`KING'D UP`}
       </Typography>
       <List>
         {navItems.map((item) => (
@@ -43,12 +43,16 @@ export default function Header() {
 
   return (
     <>
-      <AppBar position="static" color="transparent" elevation={0}>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          {/* Logo */}
-          <Typography variant="h6" fontWeight="bold">
-            KING'D UP
-          </Typography>
+      <AppBar position="static" color="transparent" elevation={1}>
+        <Toolbar sx={{ justifyContent: "space-between", paddingY: "5px" }}>
+          <img
+            src="/kingduptransparent.png"
+            alt="Logo"
+            style={{ width: "70px", height: "70px" }}
+          />
+          {/* <Typography variant="h6" fontWeight="bold">
+            {`KING'D UP`}
+          </Typography> */}
 
           {/* Desktop Nav */}
           {!isMobile && (
