@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 
-import {
-  Container,
-  Grid,
-  Typography,
-  CircularProgress,
-  Box,
-} from "@mui/material";
+import { Container, Typography, CircularProgress, Box } from "@mui/material";
 
 import HeroSection from "@/components/HeroSection";
 import ProductDisplay from "@/components/products/ProductDisplay";

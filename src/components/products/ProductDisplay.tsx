@@ -14,6 +14,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import ProductCard from "../ProductCard";
 import MobileProductCard from "../MobileProductCard";
 
+interface Variant {
+  ID: number;
+  Name: string;
+  RetailPrice: string;
+  ThumbnailURL: string;
+  Size: string;
+  Color: string;
+}
+
 interface Product {
   ID: number;
   Name: string;
@@ -22,7 +31,7 @@ interface Product {
   Color?: string;
   AvailabilityStatus?: string;
   RetailPrice?: string;
-  Variants?: any[];
+  Variants?: Variant[];
   // ...other fields
 }
 
