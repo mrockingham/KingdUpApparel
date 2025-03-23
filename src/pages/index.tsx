@@ -7,25 +7,33 @@ import {
   CircularProgress,
   Box,
 } from "@mui/material";
-import ProductCard from "@/components/ProductCard";
-import HeroSection from "@/components/HeroSection";
 
-type Variant = {
-  ID: number;
-  Name: string;
-  RetailPrice: string;
-  ThumbnailURL: string;
-};
+import HeroSection from "@/components/HeroSection";
+import ProductDisplay from "@/components/products/ProductDisplay";
+import CartFab from "@/components/cart/CartFab";
+import CartDrawer from "@/components/cart/CartDrawer";
+
+// type Variant = {
+//   ID: number;
+//   Name: string;
+//   RetailPrice: string;
+//   ThumbnailURL: string;
+// };
 
 type Product = {
   ID: number;
   Name: string;
   ThumbnailURL: string;
-  Variants: Variant[];
+  Size?: string;
+  Color?: string;
+  AvailabilityStatus?: string;
+  RetailPrice?: string;
+  // ...other fields
 };
 
 export default function Home() {
-  const [products, setProducts] = useState<Product[] | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`)
@@ -45,15 +53,16 @@ export default function Home() {
         {!products ? (
           <CircularProgress />
         ) : (
-          <Grid container spacing={3}>
-            {products.map((product) => (
-              <Grid item xs={12} sm={6} md={4} key={product.ID}>
-                <ProductCard product={product} />
-              </Grid>
-            ))}
-          </Grid>
+          <ProductDisplay products={products} />
         )}
       </Container>
+      <>
+        {/* Floating Button */}
+        <CartFab onClick={() => setDrawerOpen(true)} />
+
+        {/* Drawer */}
+        <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+      </>
     </Box>
   );
 }
