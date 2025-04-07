@@ -1,4 +1,4 @@
-import { Box, Typography, Container, Button } from "@mui/material";
+import { Typography, Container, Button } from "@mui/material";
 import Link from "next/link";
 
 export default function CheckoutCancel() {
