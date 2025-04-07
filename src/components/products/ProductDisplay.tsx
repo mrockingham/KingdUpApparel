@@ -50,16 +50,12 @@ export default function ProductDisplay({ products }: Props) {
   };
   const handleClose = () => setSelectedProduct(null);
 
-  console.log("products", products);
-
   return (
     <Grid container spacing={2}>
       {/* Product List */}
       <Grid item xs={12} md={selectedProduct ? 6 : 12}>
         <Grid container spacing={2}>
           {products?.map((product) => {
-            console.log("product", product);
-
             const retailPrice = product.Variants
               ? product.Variants[0]?.RetailPrice
               : "N/A";

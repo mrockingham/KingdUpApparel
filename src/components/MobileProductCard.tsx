@@ -8,7 +8,7 @@ import {
   IconButton,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useCartStore } from "@/components/store/cartStore";
+import { useCartStore } from "@/store/cartStore";
 
 // Types
 interface Variant {

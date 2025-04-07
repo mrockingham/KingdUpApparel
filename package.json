@@ -17,6 +17,7 @@
     "@fontsource/inter": "^5.2.5",
     "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.4.8",
+    "@stripe/stripe-js": "^7.0.0",
     "axios": "^1.8.4",
     "framer-motion": "^12.5.0",
     "next": "15.2.3",

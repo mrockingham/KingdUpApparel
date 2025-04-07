@@ -9,7 +9,9 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useCartStore } from "@/components/store/cartStore";
+import { useCartStore } from "@/store/cartStore";
+import { redirectToCheckout } from "@/lib/api/checkout";
+import CheckoutButton from "..CheckoutButton";
 
 interface CartDrawerProps {
   open: boolean;
@@ -22,6 +24,31 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
     const price = parseFloat(item.RetailPrice || "0");
     return sum + price * item.Quantity;
   }, 0);
+
+  const handleCheckout = async () => {
+    try {
+      const items = useCartStore.getState().items;
+
+      const orderPayload = {
+        items: items.map((item) => ({
+          variant_id: item.ID,
+          product_name: item.Name,
+          size: item.Size,
+          color: item.Color,
+          quantity: item.Quantity,
+          price_each: parseFloat(item.RetailPrice),
+        })),
+        total: items.reduce(
+          (sum, item) => sum + parseFloat(item.RetailPrice) * item.Quantity,
+          0
+        ),
+      };
+
+      await redirectToCheckout(orderPayload);
+    } catch (err) {
+      console.error("Stripe Checkout error:", err);
+    }
+  };
 
   return (
     <Drawer anchor="right" open={open} onClose={onClose}>
@@ -77,16 +104,18 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
 
         <Divider sx={{ my: 2 }} />
         <Typography variant="h6">Total: ${total.toFixed(2)}</Typography>
+        <CheckoutButton cartItems={items} />
 
-        <Button
+        {/* <Button
           variant="contained"
           color="warning"
           fullWidth
           sx={{ mt: 2 }}
           disabled={items.length === 0}
+          onClick={handleCheckout}
         >
           Checkout
-        </Button>
+        </Button> */}
       </Box>
     </Drawer>
   );

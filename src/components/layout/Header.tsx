@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
+import Link from "next/link";
+import { useUserStore } from "@/store/userStore";
 
 const navItems = ["Shop", "About", "Contact"];
 
@@ -21,6 +23,8 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const user = useUserStore((state) => state.user);
+  const logout = useUserStore((state) => state.logout);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prev) => !prev);
@@ -37,6 +41,35 @@ export default function Header() {
             <ListItemText primary={item} />
           </ListItemButton>
         ))}
+        {user ? (
+          <>
+            <Typography variant="body2" sx={{ mt: 2 }}>
+              Welcome, {user.Name}
+            </Typography>
+            <Button
+              onClick={() => logout()}
+              color="error"
+              sx={{ mt: 1 }}
+              fullWidth
+            >
+              Logout
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button component={Link} href="/login" color="inherit">
+              Login
+            </Button>
+            <Button component={Link} href="/register" color="inherit">
+              Register
+            </Button>
+          </>
+          //   <Link href="/login" passHref>
+          //     <Button variant="outlined" sx={{ mt: 2 }} fullWidth>
+          //       Login
+          //     </Button>
+          //   </Link>
+        )}
       </List>
     </Box>
   );
@@ -50,18 +83,32 @@ export default function Header() {
             alt="Logo"
             style={{ width: "70px", height: "70px" }}
           />
-          {/* <Typography variant="h6" fontWeight="bold">
-            {`KING'D UP`}
-          </Typography> */}
 
           {/* Desktop Nav */}
           {!isMobile && (
-            <Box display="flex" gap={2}>
+            <Box display="flex" gap={2} alignItems="center">
               {navItems.map((item) => (
                 <Button key={item} color="inherit">
                   {item}
                 </Button>
               ))}
+              {user ? (
+                <>
+                  <Typography fontSize="0.9rem">Hi, {user.Name}</Typography>
+                  <Button onClick={() => logout()} color="error">
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button component={Link} href="/login" color="inherit">
+                    Login
+                  </Button>
+                  <Button component={Link} href="/register" color="inherit">
+                    Register
+                  </Button>
+                </>
+              )}
             </Box>
           )}
 

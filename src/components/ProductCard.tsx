@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Box, Grid, Typography, Select, MenuItem, Button } from "@mui/material";
 import { useState, useMemo } from "react";
-import { useCartStore } from "@/components/store/cartStore";
+import { useCartStore } from "@/store/cartStore";
 type Variant = {
   ID: number;
   Name: string;

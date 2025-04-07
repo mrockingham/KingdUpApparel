@@ -1,6 +1,6 @@
 import { Fab, Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useCartStore } from "@/components/store/cartStore";
+import { useCartStore } from "@/store/cartStore";
 import { motion } from "framer-motion";
 
 interface CartFabProps {

@@ -1,6 +1,7 @@
     // components/store/cartStore.ts
     import { create } from "zustand";
     import { persist } from "zustand/middleware";
+    
 
     type CartItem = {
     ID: number;
