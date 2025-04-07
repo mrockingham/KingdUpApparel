@@ -10,7 +10,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useCartStore } from "@/store/cartStore";
-import { redirectToCheckout } from "@/lib/api/checkout";
+
 import CheckoutButton from "../CheckoutButton";
 
 interface CartDrawerProps {

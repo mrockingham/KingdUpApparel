@@ -1,14 +1,7 @@
 // pages/register.tsx
 import { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-  Container,
-  Alert,
-} from "@mui/material";
+import { Button, TextField, Typography, Container, Alert } from "@mui/material";
 
 export default function RegisterPage() {
   const router = useRouter();

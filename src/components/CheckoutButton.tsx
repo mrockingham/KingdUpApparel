@@ -1,6 +1,6 @@
 // components/CheckoutButton.tsx
 import { Button } from "@mui/material";
-import { loadStripe } from "@stripe/stripe-js";
+
 import { useCartStore } from "@/store/cartStore";
 import { useUserStore } from "@/store/userStore";
 

@@ -8,7 +8,6 @@ import { Button, TextField, Typography, Container, Alert } from "@mui/material";
 export default function LoginPage() {
   const router = useRouter();
   const [form, setForm] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -35,8 +34,6 @@ export default function LoginPage() {
       <Typography variant="h4" gutterBottom>
         Log In
       </Typography>
-
-      {error && <Alert severity="error">{error}</Alert>}
 
       <TextField
         fullWidth
