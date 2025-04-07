@@ -3,14 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { loginUser, fetchCurrentUser } from "@/lib/api/user";
 import { useUserStore } from "@/store/userStore";
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-  Container,
-  Alert,
-} from "@mui/material";
+import { Button, TextField, Typography, Container, Alert } from "@mui/material";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,8 +24,9 @@ export default function LoginPage() {
       useUserStore.getState().setUser(user);
 
       router.push("/");
-    } catch (err: any) {
-      setError(err.message || "Login failed");
+    } catch (err: unknown) {
+      console.error(err);
+      // setError(err.message || "Login failed");
     }
   };
 

@@ -4,12 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useCartStore } from "@/store/cartStore";
 import { useUserStore } from "@/store/userStore";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
-
-interface CheckoutButtonProps {
-  cartItems: any[]; // You can make a type for this if needed
-}
-export default function CheckoutButton({ cartItems }: CheckoutButtonProps) {
+export default function CheckoutButton() {
   const items = useCartStore((state) => state.items);
 
   const user = useUserStore((state) => state.user);

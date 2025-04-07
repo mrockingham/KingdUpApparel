@@ -17,7 +17,7 @@ export async function loginUser(email: string, password: string): Promise<{ toke
   return res.json();
 }
 
-export async function fetchCurrentUser(token: string): Promise<any> {
+export async function fetchCurrentUser(token: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/me`, {
     headers: {
       Authorization: `Bearer ${token}`,

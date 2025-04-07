@@ -1,4 +1,4 @@
-import { Box, Typography, Container, Button } from "@mui/material";
+import { Typography, Container, Button } from "@mui/material";
 import Link from "next/link";
 
 export default function CheckoutSuccess() {
@@ -8,7 +8,7 @@ export default function CheckoutSuccess() {
         🎉 Thank you for your order!
       </Typography>
       <Typography variant="body1" sx={{ mb: 3 }}>
-        Your payment was successful. We'll send you an email with the details.
+        {`Your payment was successful. We'll send you an email with the details.`}
       </Typography>
       <Button variant="contained" component={Link} href="/" color="primary">
         Continue Shopping

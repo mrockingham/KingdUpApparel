@@ -2,7 +2,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
-export async function redirectToCheckout(orderData: any) {
+export async function redirectToCheckout(orderData: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/create-checkout-session`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
