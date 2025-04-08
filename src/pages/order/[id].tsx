@@ -60,8 +60,9 @@ export default function OrderPage() {
 
         const data = await res.json();
         setOrder(data.order);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch order");
       }
     };
 
