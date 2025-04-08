@@ -33,25 +33,35 @@ export default function OrderPage() {
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
   useEffect(() => {
-    if (!id) return;
+    if (!id) return; // wait for the router
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("Not authenticated");
+      return;
+    }
 
     const fetchOrder = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/orders/${id}`
+          `${process.env.NEXT_PUBLIC_API_URL}/orders/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
+
         if (!res.ok) {
-          throw new Error("Order not found");
+          const data = await res.json();
+          throw new Error(data.error || "Failed to fetch order");
         }
+
         const data = await res.json();
-        setOrder(data);
-      } catch (err) {
-        console.error(err);
-        setError("Failed to fetch order");
-      } finally {
-        setLoading(false);
+        setOrder(data.order);
+      } catch (err: any) {
+        setError(err.message);
       }
     };
 
