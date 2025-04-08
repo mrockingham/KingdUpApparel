@@ -47,8 +47,9 @@ export default function OrderPage() {
         }
         const data = await res.json();
         setOrder(data);
-      } catch (err: any) {
-        setError(err.message || "Failed to fetch order");
+      } catch (err) {
+        console.error(err);
+        setError("Failed to fetch order");
       } finally {
         setLoading(false);
       }
