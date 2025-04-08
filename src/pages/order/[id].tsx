@@ -31,7 +31,7 @@ export default function OrderPage() {
   const router = useRouter();
   const { id } = router.query;
   const [order, setOrder] = useState<Order | null>(null);
-  const [loading, setLoading] = useState(true);
+  //   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   useEffect(() => {
     if (!id) return; // wait for the router
@@ -69,7 +69,7 @@ export default function OrderPage() {
     fetchOrder();
   }, [id]);
 
-  if (loading) return <CircularProgress />;
+  //   if (loading) return <CircularProgress />;
   if (error) return <Alert severity="error">{error}</Alert>;
 
   return (
