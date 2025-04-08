@@ -66,8 +66,6 @@ export default function ProductCard({ product }: ProductCardProps) {
       Color: selectedVariant?.Color || "",
       Quantity: 1,
     });
-
-    console.log("✅ Added to cart:", product.Name);
   };
 
   return (
