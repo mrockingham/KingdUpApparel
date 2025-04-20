@@ -23,7 +23,7 @@ export default function CheckoutButton() {
               quantity: item.Quantity,
             })),
             is_guest: user ? false : true,
-            user_id: user ? user.ID : null,
+            user_id: user ? user.id : null,
             return_url: `${window.location.origin}/checkout-success`,
             cancel_url: `${window.location.origin}/checkout-cancel`,
           }),
