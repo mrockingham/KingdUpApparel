@@ -13,7 +13,7 @@ import {
   ListItemButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useUserStore } from "@/store/userStore";
 
@@ -25,10 +25,14 @@ export default function Header() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const user = useUserStore((state) => state.user);
   const logout = useUserStore((state) => state.logout);
-
+  const loadUserFromToken = useUserStore((state) => state.loadUserFromToken);
   const handleDrawerToggle = () => {
     setMobileOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    loadUserFromToken();
+  }, []);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", p: 2 }}>
